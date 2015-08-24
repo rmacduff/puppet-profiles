@@ -8,7 +8,7 @@ define profiles::user_wrapper (
   user { $username:
     ensure     => $ensure,
     uid        => $uid,
-    home       => "home/${username}",
+    home       => "/home/${username}",
     managehome => true,
   }
 
