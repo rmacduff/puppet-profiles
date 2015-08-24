@@ -4,12 +4,14 @@ define profiles::user_wrapper (
   $uid,
   $ssh_key_type,
   $ssh_key,
+  $groups = [],
 ) {
   user { $username:
     ensure     => $ensure,
     uid        => $uid,
     home       => "/home/${username}",
     managehome => true,
+    groups     => $groups,
   }
 
   group { $username:
