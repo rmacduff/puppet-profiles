@@ -34,4 +34,11 @@ define profiles::user_wrapper (
     require           =>  File["/home/${username}"],
   }
 
+  ssh_authorized_key { "${username}-ssh-key":
+    user   => $username,
+    ensure => present,
+    type   => $ssh_key_type,
+    key    => $ssh_key
+  }
+
 }
