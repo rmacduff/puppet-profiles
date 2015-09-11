@@ -16,5 +16,5 @@ class profiles::ghost {
   class { '::ghost':
     require => Package['npm'],
   }
-  create_resources('ghost::blog', hiera_hash('ghost::blogs', {}))
+  create_resources('rdm_ghost', hiera_hash('rdm_ghost', {}))
 }
