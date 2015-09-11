@@ -1,5 +1,13 @@
 class profiles::nginx {
-  class { '::nginx': }
+  class { '::nginx':
+    proxy_set_header => [
+      'Host $host',
+      'X-Real-IP $remote_addr',
+      'X-Forwarded-For $proxy_add_x_forwarded_for',
+      'X-Forwarded-Proto $scheme',
+    ],
+    server_tokens    => 'off',
+  }
 
   file { '/etc/pki/tls/certs/_.macduff.ca-bundle.crt':
     ensure => file,
