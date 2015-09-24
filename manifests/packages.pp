@@ -1,6 +1,7 @@
 class profiles::packages {
-  $packages = hiera('packages')
-  package { $packages: 
-    ensure => installed,
+  class { 'profiles::repos':
+    stage => 'pre'
   }
+  $packages = hiera('packages')
+  ensure_packages( $packages )
 }
